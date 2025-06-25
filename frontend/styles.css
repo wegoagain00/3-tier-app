@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+main {
+    flex: 1;
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.shortener-form {
+    margin-bottom: 40px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#longUrl {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid #e1e5e9;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+#longUrl:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#shortenBtn, #copyBtn {
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#shortenBtn:hover, #copyBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+#shortenBtn:active, #copyBtn:active {
+    transform: translateY(0);
+}
+
+.loading {
+    text-align: center;
+    color: #667eea;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.error {
+    background: #fee;
+    color: #c33;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #c33;
+}
+
+.result {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    border: 2px solid #e9ecef;
+}
+
+.result h3 {
+    color: #495057;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.url-result {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#shortUrl {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid #28a745;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #28a745;
+    background: #f8fff9;
+}
+
+#copyBtn {
+    background: #28a745;
+}
+
+#copyBtn:hover {
+    background: #218838;
+    box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3);
+}
+
+.stats {
+    color: #6c757d;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.stats span {
+    color: #495057;
+    font-weight: bold;
+}
+
+.recent-links {
+    border-top: 2px solid #e9ecef;
+    padding-top: 30px;
+}
+
+.recent-links h3 {
+    color: #495057;
+    margin-bottom: 20px;
+}
+
+.recent-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.recent-item {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+}
+
+.recent-item .short-link {
+    color: #667eea;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.recent-item .short-link:hover {
+    text-decoration: underline;
+}
+
+.recent-item .original-link {
+    color: #6c757d;
+    font-size: 14px;
+    margin-top: 5px;
+    word-break: break-all;
+}
+
+.no-links {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    padding: 40px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: white;
+    opacity: 0.8;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    main {
+        padding: 20px;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+    
+    .url-result {
+        flex-direction: column;
+    }
+    
+    #longUrl, #shortUrl, #shortenBtn, #copyBtn {
+        font-size: 14px;
+    }
+}

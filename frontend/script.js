@@ -1,6 +1,3 @@
-// API base URL - change this based on your backend URL
-const API_BASE_URL = "http://localhost:3001";
-
 // DOM elements
 const longUrlInput = document.getElementById("longUrl");
 const shortenBtn = document.getElementById("shortenBtn");
@@ -46,7 +43,9 @@ async function shortenUrl() {
   hideResult();
 
   try {
-    const response = await fetch(`${API_BASE_URL}/api/shorten`, {
+    // CORRECTED: Fetch from the relative API path.
+    // Nginx will proxy this request to the backend.
+    const response = await fetch("/api/shorten", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +70,9 @@ async function shortenUrl() {
 }
 
 function displayResult(data) {
-  const fullShortUrl = `${API_BASE_URL}/${data.shortCode}`;
+  // CORRECTED: Build the full URL using the current page's origin.
+  // This creates a valid, clickable link like http://<your-ip>:3000/xyz123
+  const fullShortUrl = `${window.location.origin}/${data.shortCode}`;
 
   shortUrlInput.value = fullShortUrl;
   originalUrl.textContent = data.originalUrl;
@@ -103,7 +104,8 @@ function copyToClipboard() {
 }
 
 function addToRecentLinks(linkData) {
-  const fullShortUrl = `${API_BASE_URL}/${linkData.shortCode}`;
+  // CORRECTED: Build the full URL using the current page's origin.
+  const fullShortUrl = `${window.location.origin}/${linkData.shortCode}`;
 
   // Add to beginning of array
   recentLinks.unshift({
@@ -144,11 +146,13 @@ function updateRecentLinksDisplay() {
 
 async function loadRecentLinks() {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/recent`);
+    // CORRECTED: Fetch from the relative API path.
+    const response = await fetch("/api/recent");
     if (response.ok) {
       const data = await response.json();
       recentLinks = data.map((item) => ({
-        shortUrl: `${API_BASE_URL}/${item.shortCode}`,
+        // CORRECTED: Build the full URL using the current page's origin.
+        shortUrl: `${window.location.origin}/${item.shortCode}`,
         shortCode: item.shortCode,
         originalUrl: item.originalUrl,
         createdAt: new Date(item.createdAt).toLocaleString(),

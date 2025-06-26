@@ -137,7 +137,7 @@ resource "aws_instance" "app_server" {
               chmod +x /usr/local/bin/docker-compose
 
               # Replace this with your actual repository URL
-              git clone https://github.com/wegoagain00/3-tier-web-app /app
+              git clone https://github.com/wegoagain00/3-tier-web-app.git /app
               
               # Change to the app directory and run docker-compose
               cd /app

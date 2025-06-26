@@ -14,7 +14,7 @@
     "mongodb",
     "api"
   ],
-  "author": "Your Name",
+  "author": "T",
   "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
